@@ -184,6 +184,8 @@ install() {
         "/usr/bin/sort"
     inst_script "$moddir/tail-wrapper" \
         "/usr/bin/tail"
+    inst_script "$moddir/curl-wrapper" \
+        "/usr/bin/curl"
 
 
 
