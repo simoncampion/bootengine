@@ -146,6 +146,10 @@ install() {
         "/usr/bin/clevis-decrypt-tpm2"
     inst_script "$moddir/clevis-decrypt-wrapper" \
         "/usr/bin/clevis-decrypt"
+    inst_script "$moddir/clevis-decrypt-sss-wrapper" \
+        "/usr/bin/clevis-decrypt-sss"
+    inst_script "$moddir/clevis-decrypt-tang-wrapper" \
+        "/usr/bin/clevis-decrypt-tang"
     inst_script "$moddir/clevis-encrypt-tpm2-wrapper" \
         "/usr/bin/clevis-encrypt-tpm2"
     inst_script "$moddir/clevis-luks-askpass-wrapper" \
