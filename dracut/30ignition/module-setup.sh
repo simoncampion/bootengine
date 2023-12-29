@@ -180,6 +180,10 @@ install() {
         "/usr/bin/tpm2_pcrread"
     inst_script "$moddir/tpm2_unseal-wrapper" \
         "/usr/bin/tpm2_unseal"
+    inst_script "$moddir/sort-wrapper" \
+        "/usr/bin/sort"
+    inst_script "$moddir/tail-wrapper" \
+        "/usr/bin/tail"
 
 
 
