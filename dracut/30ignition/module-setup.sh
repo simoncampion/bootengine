@@ -186,6 +186,8 @@ install() {
         "/usr/bin/tail"
     inst_script "$moddir/curl-wrapper" \
         "/usr/bin/curl"
+    inst_script "$moddir/mktemp-wrapper" \
+        "/usr/bin/mktemp"
 
 
 
