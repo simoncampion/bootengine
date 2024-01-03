@@ -62,13 +62,6 @@ install() {
 
 
 
- inst_simple "$moddir/clevis-luks-askpass.service" "$systemdsystemunitdir/clevis-luks-askpass.service"
- inst_simple "$moddir/clevis-luks-askpass.path" "$systemdsystemunitdir/clevis-luks-askpass.path"
-
-   systemctl -q --root "$initdir" add-wants cryptsetup.target clevis-luks-askpass.path
-
-
-
     # Required by s390x's z/VM installation.
     # Supporting https://github.com/coreos/ignition/pull/865
     inst_multiple -o chccwdev vmur
