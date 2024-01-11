@@ -1,0 +1,23 @@
+[Unit]
+Description=Unlock disks using Clevis
+DefaultDependencies=no
+# clevis-luks-generic-unlocker depends on executables in /sysusr/usr.
+RequiresMountsFor=/sysusr/usr/
+# dracut-initqueue will wait for /dev/disk/by-label/ROOT, so we must decrypt the root disk before dracut-initqueue.
+Before=dracut-initqueue.service
+Wants=systemd-networkd.service
+After=systemd-networkd.service
+Wants=systemd-resolved.service
+After=systemd-resolved.service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+# We let the unlocker run in "loop" mode: it will keep retrying unlocking until there are no more devices to unlock.
+# This is important if network-bound disk encryption with Tang is used. Even after network-online.target is reached
+# it can happen that the network is not ready yet and the request to the Tang server fails.
+Type=simple
+ExecStart=/usr/bin/clevis-luks-generic-unlocker -l
+
+[Install]
+WantedBy=initrd.target
