@@ -3,6 +3,7 @@ Description=Unlock disks using Clevis
 DefaultDependencies=no
 # clevis-luks-generic-unlocker depends on executables in /sysusr/usr.
 RequiresMountsFor=/sysusr/usr/
+Before=initrd-root-fs.target
 # dracut-initqueue will wait for /dev/disk/by-label/ROOT, so we must decrypt the root disk before dracut-initqueue.
 Before=dracut-initqueue.service
 Wants=systemd-networkd.service
