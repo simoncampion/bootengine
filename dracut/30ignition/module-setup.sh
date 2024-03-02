@@ -134,15 +134,11 @@ install() {
         /usr/bin/clevis-decrypt \
         /usr/bin/clevis-encrypt-tpm2 \
         /usr/bin/clevis-luks-bind \
-        /usr/bin/clevis-luks-common-functions \
-        /usr/bin/clevis-luks-list \
         /usr/bin/clevis-luks-unlock \
         /usr/bin/clevis \
         /usr/bin/coreos-metadata \
         /usr/bin/curl \
         /usr/bin/ignition \
-        /usr/bin/jose \
-        /usr/bin/luksmeta \
         /usr/bin/mktemp \
         /usr/bin/pwmake \
         /usr/bin/sort \
