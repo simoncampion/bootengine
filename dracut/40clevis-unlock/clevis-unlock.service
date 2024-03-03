@@ -6,12 +6,8 @@ RequiresMountsFor=/sysusr/usr/
 Before=initrd-root-fs.target
 # dracut-initqueue will wait for /dev/disk/by-label/ROOT, so we must decrypt the root disk before dracut-initqueue.
 Before=dracut-initqueue.service
-Wants=systemd-networkd.service
-After=systemd-networkd.service
-Wants=systemd-resolved.service
-After=systemd-resolved.service
-Wants=network-online.target
-After=network-online.target
+ConditionKernelCommandLine=|rd.clevis_unlock=network
+ConditionKernelCommandLine=|rd.clevis_unlock=no_network
 
 [Service]
 # We let the unlocker run in "loop" mode: it will keep retrying unlocking until there are no more devices to unlock.
