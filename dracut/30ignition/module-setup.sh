@@ -129,13 +129,16 @@ install() {
     # Flatcar: add 66-azure-storage.rules and 90-cloud-storage.rules
     inst_rules 60-cdrom_id.rules 66-azure-storage.rules 90-cloud-storage.rules
 
-    # Flatcar: add wrappers for Ignition, coreos-metadata (afterburn), and 
-    # Clevis, which rely on the earlier /sysusr/usr mount
+    # Flatcar: add symlinks for dependencies of Ignition, coreos-metadata (afterburn), and 
+    # Clevis. This saves space in the initramfs image by replacing files with symlinks to
+    # the previously mounted /sysusr/.
     for executable in \
         /usr/bin/clevis-decrypt-sss \
         /usr/bin/clevis-decrypt-tang \
         /usr/bin/clevis-decrypt-tpm2 \
         /usr/bin/clevis-decrypt \
+        /usr/bin/clevis-encrypt-sss \
+        /usr/bin/clevis-encrypt-tang \
         /usr/bin/clevis-encrypt-tpm2 \
         /usr/bin/clevis-luks-bind \
         /usr/bin/clevis-luks-common-functions \
@@ -160,6 +163,7 @@ install() {
         /usr/bin/tpm2_unseal \
         /usr/lib/systemd-reply-password \
         /usr/local/libexec/clevis-luks-askpass \
+        /usr/libexec/clevis-luks-generic-unlocker \
         /usr/sbin/setfiles \
     ; do
         directory="$(dirname "$executable")"
